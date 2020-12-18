@@ -25,27 +25,36 @@
 	border: 1px solid white;	
 }
 </style>
-<script src="../Jquery/jquery-2.1.3.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 
 $(document).ready(function() {
-
+	//se ejecuta accion al click de boton submit
 	$("#login").submit(function(){
 		
 		/*var datosFormulario={usuario:$("#usuario").val(),
 		                     contra:$("#contra").val()}	*/
 							 
+		//serialize recorre todos los campos de un formulario, y los almacen aen la variable
 		var datosFormulario=$(this).serialize();
-							 
-		$.get("login.php", datosFormulario, procesarDatos);
+		
+		//getJson para procesar la informacion recibida de parte del servidor
+		/*
+		3 parametros: el archivo php con el que se va a comunivar, 
+		la informacion eviada en el objeto XHR, en este caso, lo almacenado en var DatosFormulario y
+		la funcion que procesa respuesta del servidor
+		*/
+		$.getJSON("login2.php", datosFormulario, procesarDatos);
 		
 		return false;
 		
 		
 	});
 	
+	//funcion que gestiona respuesta del servidor
 	function procesarDatos(datos_devueltos){		
-		
+		//datos_devueltos es igual al objeto JSON
+		$("#contenidos_externos").html("<p>" + datos_devueltos.Edad + "</p>");
 		
 				
 	}

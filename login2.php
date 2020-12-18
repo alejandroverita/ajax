@@ -3,6 +3,7 @@
 
 $el_usuario=isset($_GET['usuario']) ? $_GET['usuario'] : $_POST['usuario'];
 
+//array donde se pueda almacenar un JSON
 $el_array = new stdClass();
 
 if ($el_usuario=="Juan") {
